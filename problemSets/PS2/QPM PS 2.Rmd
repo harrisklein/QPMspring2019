@@ -1,0 +1,64 @@
+---
+title: "Hw"
+output: pdf_document
+---
+
+```{r}
+(1 - pnorm(57.5,50,6))
+
+pnorm(50.45,50,6)
+
+pnorm(52.4,50,6)*(1 - pnorm(59.4,50,6))
+
+```
+
+
+
+```{r}
+set.seed(12345)
+salaries <- rnorm(1000,4000,15000)
+hist(salaries)
+```
+
+```{r}
+
+
+```
+
+
+
+```{r}
+hist(drugCoverage$Year,  seq(ISOdate(1970, 1, 1), ISOdate(2010, 1, 1), "1 years"))
+```
+
+
+```{r}
+t <- seq(-5,5)
+d1 <-dnorm(t,0,.4)
+d2 <-dnorm(t,0,3)
+d3 <-dnorm(t,3,3)
+d4 <-dnorm(t,3,.4)
+d5 <-dnorm(t,-2,5)
+d6 <-dnorm(t,-2, 14)
+plot(t,d1)
+plot(t,d2)
+plot(t,d3)
+plot(t,d4)
+plot(t,d5)
+plot(t,d6)
+lines(t,d1,col="black")
+lines(t,d2,col="yellow")
+lines(t,d3,col="blue")
+lines(t,d4,col="red")
+lines(t,d5,col="orange")
+lines(t,d6,col="green")
+```
+
+
+
+```
+
+
+
+
+
