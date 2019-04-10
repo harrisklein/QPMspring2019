@@ -1,0 +1,54 @@
+#QPM PSET3
+
+install.packages("faraway")
+library("faraway")
+data("newhamp")
+
+plot(newhamp$Dean[newhamp$votesys=="X"],newhamp$pObama[newhamp$votesys=="X"],col="gold",pch=18)
+xlim=c (min(newhamp$Dean), max(newhamp$Dean))
+ylim=c (min(newhamp$pObama), max(newhamp$pObama))
+ main=cex.lab=1.25
+    
+points(newhamp$Dean[newhamp$votesys],newhamp$pObama[newhamp$votesys],col="red", pch=2)   
+
+legend("bottomright", pch=c(18,2), col=c("gold", "red"), legend=c("machine", "Hand"), cex=1)
+
+
+
+#question 2
+set.seed(5)
+x<-seq(from=-5, to=5, by=.1)
+plot(x,dnorm(x), lwd=3, type="l", col=1,lty=1, ylab="Probability Distribution density")
+lines(x, dt(x,df =10),lwd=3, ylim=c(0, .4), col=2, lty =2)
+lines(x, dt(x,df =5),lwd=3, ylim=c(0, .4), col=3, lty =3)
+lines(x, dt(x,df =1),lwd=3, ylim=c(0, .4), col=4, lty =4)
+
+legend("topright", c("n(0,1)", "t(df=10)", "t(df=5)", "t(df=1)"), lty=c(1,2,3,4), col=c(1,2,3,4), bty= "n")
+
+
+#Q3
+install.packages("Zelig")
+library("Zelig")
+data("voteincome")
+?voteincome
+
+w<- length(na.omit(voteincome$age))
+mean_age<-mean(voteincome$age, na.rm=T)
+sd_age<-sd(voteincome$age, na.rm=T)
+std_error<- sd_age/sqrt(w)
+
+#SE
+std_error
+#T-stat
+test_stat<-(mean_age-50)/std_error
+test_stat
+
+#pval
+p_val<-2*pnorm(test_stat, mean =0, sd=1)
+p_val
+
+z_score<-qnorm(.025)
+Upper_bound<-mean_age + z_score*(sd_age/sqrt(w))
+lower_bound<-mean_age - z_score*(sd_age/sqrt(w))
+
+c(Upper_bound, lower_bound)
